@@ -118,6 +118,8 @@ export default class AppLayout extends Vue {
   private setIsOnline!: Function;
   @Mutation('unsetUser', { namespace: 'authModule' })
   private unsetUser!: Function;
+  @Mutation('setIsLogged', { namespace: 'authModule' })
+  private setIsLogged!: Function;
   @State('appName')
   private appName!: string;
   @State('isLogged', { namespace: 'authModule' })
@@ -140,7 +142,8 @@ export default class AppLayout extends Vue {
   logout() {
     Vue.prototype.$q.loading.show();
     setTimeout(() => {
-      this.unsetUser();
+      // this.unsetUser();
+      this.setIsLogged(false);
       this.$router.push('/login');
       Vue.prototype.$q.loading.hide();
     }, 2000);

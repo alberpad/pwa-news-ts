@@ -14,7 +14,7 @@ export const actions: NewsActionTree = {
         method: 'GET',
         url: `news`
       });
-      context.commit('setNews', response.data);
+      context.commit('setOfflineNews', response.data);
       // context.commit('setMessage', response.data.res);
     } catch (error) {
       // context.commit('authError', error.response.data.message);

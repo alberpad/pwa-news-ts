@@ -1,4 +1,4 @@
-# vue-ts-app
+# PWA Vue Quasar
 
 ## Proyecto del curso Vue Pwa Quasar
 

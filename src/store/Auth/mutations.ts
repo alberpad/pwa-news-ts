@@ -10,6 +10,9 @@ export const mutations: AuthMutationTree = {
     state.error = false;
     state.errorMessage = '';
   },
+  setIsLogged(state: IAuthState, logged: boolean) {
+    state.isLogged = logged;
+  },
   setMessage(state: IAuthState, message: string) {
     state.message = message;
   },
