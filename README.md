@@ -1,6 +1,6 @@
 # vue-ts-app
 
-## Proyecto del curso avanzado Vue y TypeScript:
+## Proyecto del curso Vue Pwa Quasar
 
 [www.cursodesarrolloweb.es](https://www.cursosdesarrolloweb.es/)
 
