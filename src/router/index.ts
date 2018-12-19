@@ -10,11 +10,18 @@ const router = new Router({
 });
 
 router.beforeEach((to: Route, from: Route, next: any) => {
+  // Estos controles de flujo también se pueden implentar en el hook mounted() de cada componente
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const requiresOnline = to.matched.some((record) => record.meta.requiresOnline);
   // @ts-ignore
   const isLogged = store.state.authModule.isLogged;
+  // @ts-ignore
+  const isOnline = store.state.appModule.isOnline;
   if (!requiresAuth && isLogged && to.path === '/login') {
     return next('/news');
+  }
+  if (requiresOnline && !isOnline && to.path === '/register') {
+    return next('/login');
   }
   setTimeout(() => {
     if (requiresAuth && !isLogged) {
@@ -22,7 +29,12 @@ router.beforeEach((to: Route, from: Route, next: any) => {
     } else {
       next();
     }
+    // if (requiresOnline && !isOnline && to.path === '/register') {
+    //   next('/login');
+    // } else {
+    //   next();
+    // }
   }, 200);
 });
-
+// fin
 export default router;

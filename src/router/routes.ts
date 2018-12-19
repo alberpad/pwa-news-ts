@@ -5,7 +5,7 @@ const routes = [
     children: [
       { path: '', component: () => import('@/views/Index.vue') },
       { path: 'login', component: () => import('@/views/Login.vue') },
-      { path: 'register', component: () => import('@/views/Register.vue') },
+      { path: 'register', component: () => import('@/views/Register.vue'), meta: { requiresOnline: true } },
       { path: 'news', component: () => import('@/views/News.vue'), meta: { requiresAuth: true } },
       {
         path: 'news/:id',
