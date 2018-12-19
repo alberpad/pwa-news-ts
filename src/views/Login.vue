@@ -66,9 +66,6 @@ export default class LoginPage extends Vue {
       }, 2000);
     } else {
       setTimeout(() => {
-        console.log(this.user);
-        console.log(this.user);
-        console.log(this.user);
         if (this.user) {
           Vue.prototype.$q.loading.show();
 

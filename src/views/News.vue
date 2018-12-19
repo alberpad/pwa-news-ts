@@ -5,7 +5,7 @@
         <q-list-header class="bg-header">{{$t('news')}}</q-list-header>
         <new-item
           :single-new="singleNew"
-          v-for="singleNew in news"
+          v-for="singleNew in arrayNews"
           :key="singleNew.id"
           @onForward="goNewsDetail(singleNew)"
         ></new-item>
@@ -26,6 +26,7 @@ import { mapActions, mapMutations, mapState } from 'vuex';
 import { INew } from '@/store/News/types';
 import NewItem from '@/components/News/NewItem.vue';
 import { AxiosResponse } from 'axios';
+import { Route } from 'vue-router';
 
 @Component({
   components: {
@@ -33,7 +34,8 @@ import { AxiosResponse } from 'axios';
   },
   computed: {
     ...mapState('newsModule', ['news', 'offlineNews', 'start', 'limit']),
-    ...mapState('appModule', ['isOnline'])
+    ...mapState('appModule', ['isOnline']),
+    ...mapState('authModule', ['isLogged'])
   },
   methods: {
     ...mapMutations('newsModule', ['setNews', 'setSingleNew', 'setStart', 'setOfflineNews'])
@@ -53,6 +55,7 @@ export default class News extends Vue {
   private setSingleNew!: Function;
   private setStart!: Function;
   private setOfflineNews!: Function;
+  private isLogged!: boolean;
 
   @Watch('isOnline')
   isOnlineChanged(val: boolean) {
